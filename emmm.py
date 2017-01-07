@@ -114,7 +114,7 @@ class EMMM_Slack_Bot():
     def handle_message(self, message):
         text = message[self.text_key]
 
-        # TODO: For now all messages to the bot trigger emmm
+        # TODO: For now only a single emmm command
         self.eeny_meeny_miny_moe(message)
 
     def eeny_meeny_miny_moe(self, message):

@@ -51,6 +51,8 @@ While the bot's running in a channel, in Slack you can type **@emmm** to trigger
 
 It will randomly choose a user out of all of the users in the channel, minus any bots configured to be ignored, and send a message to the channel with the user that was chosen.
 
+---
+
 ###### Author
 
 Andy Boutin

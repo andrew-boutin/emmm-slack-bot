@@ -1,7 +1,12 @@
-# Script to get Bot ID
-# Modified script from this source: https://www.fullstackpython.com/blog/build-first-slack-bot-python.html
-# Requires BOT_NAME & SLACK_BOT_TOKEN environment variables
-# Linux
+"""Get Slack Bot ID
+
+Helper script that can retrieve the id of a given Slack bot.
+
+Author: andrew-boutin
+
+Credits:
+Used this source to get started: https://www.fullstackpython.com/blog/build-first-slack-bot-python.html
+"""
 import os
 from slackclient import SlackClient
 
@@ -15,7 +20,6 @@ def get_bot_id(name, token):
     api_call = slack_client.api_call("users.list")
 
     found = False
-
 
     if api_call.get('ok'):
         # retrieve all users so we can find our bot
