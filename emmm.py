@@ -18,9 +18,9 @@ from slackclient import SlackClient
 
 
 class EMMM_Slack_Bot():
-    """"""
+    """Slack Bot that can randomly choose a user from a channel when mentioned."""
 
-    def __init__(self, bot_name, bot_id, bot_token):
+    def __init__(self, bot_name, bot_id, bot_token, known_bot_names=[]):
         """"""
         self.text_key = 'text'
         self.channel_key = 'channel'
@@ -52,8 +52,8 @@ class EMMM_Slack_Bot():
         # Having a mapping of known user ids to names is useful
         self.user_id_name_dict = self.populate_id_name_dict()
 
-        # TODO: Read in. Optional.
-        self.known_bot_ids = self.lookup_bot_ids_by_names(['choboi', 'pangolin', self.BOT_NAME])
+        # Knowing who the bots are allows us to not consider them later
+        self.known_bot_ids = self.lookup_bot_ids_by_names(known_bot_names)
 
         print("Bot initialized. Ready to connect.")
 
@@ -77,7 +77,6 @@ class EMMM_Slack_Bot():
 
             time.sleep(1)
 
-    # TODO: Qeue up valid messages to parse?
     def parse_response(self, response):
         """Parse the response from Slack for messages the bot may care about.
 
@@ -201,8 +200,11 @@ if __name__ == "__main__":
     BOT_ID = os.environ.get("SLACK_BOT_ID")
     BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 
+    known_bot_names = ['pangolin', 'choboi']
+    known_bot_names.append(BOT_NAME)
+
     # Connect and start listening
-    emmm = EMMM_Slack_Bot(bot_name=BOT_NAME, bot_id=BOT_ID, bot_token=BOT_TOKEN)
+    emmm = EMMM_Slack_Bot(bot_name=BOT_NAME, bot_id=BOT_ID, bot_token=BOT_TOKEN, known_bot_names=known_bot_names)
     emmm.connect()
     emmm.start_bot()
 
