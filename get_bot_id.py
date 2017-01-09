@@ -12,31 +12,36 @@ from slackclient import SlackClient
 
 
 def get_bot_id(name, token):
-    """"""
+    """Retrives the ID of the given Slack Bot and prints it out.
+
+    Args:
+        name (String): Name of the Slack Bot.
+        token (String): Token associated with the Slack Bot.
+    """
     print("Using BOT_NAME: {}, BOT_TOKEN: {}.".format(BOT_NAME, BOT_TOKEN))
     print("Attempting to determine BOT_ID.")
 
+    # Connect to slack and retrieve all user info
     slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
     api_call = slack_client.api_call("users.list")
 
-    found = False
-
     if api_call.get('ok'):
-        # retrieve all users so we can find our bot
+        # Retrieve all users so we can find our bot
         users = api_call.get('members')
 
         for user in users:
+            # Look for our bot
             if 'name' in user and user.get('name') == BOT_NAME:
-                found = True
                 print("Bot ID: {}.".format(user.get('id')))
+                return
 
-        if not found:
-            print("Could not find bot user with the name " + BOT_NAME)
+        print("Could not find bot user with the name " + BOT_NAME)
     else:
         print("Failed to make api call to Slack.")
 
 
 if __name__ == '__main__':
+    # Running the script itself assumes you have the bot name and token exported as env vars
     BOT_NAME = os.environ.get('SLACK_BOT_NAME')
     BOT_TOKEN = os.environ.get('SLACK_BOT_TOKEN')
 
