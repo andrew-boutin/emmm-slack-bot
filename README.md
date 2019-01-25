@@ -2,9 +2,7 @@
 
 EMMM (Eeny, meeny, miny, moe) is a [Slack Bot](https://api.slack.com/bot-users) that can randomly choose a user in a channel out of all of the members in the channel.
 
----
-
-### Setup
+## Setup
 
 The bot uses `python3` and the `slackclient` package.
 
@@ -18,12 +16,12 @@ The script `get_bot_id.py` can be used to get the `id` by using the `name` and `
 
 In Slack, invite the bot to any of the channels that you want it available in.
 
-```
+```python
 # Using get_bot_id in get_bot_id.py to get the bot's id
 get_bot_id(BOT_NAME, BOT_TOKEN)
 ```
 
-### Use
+## Use
 
 You need the bot's `name`, `token`, and `id` to connect the bot to the *Slack APIs*.
 
@@ -38,7 +36,7 @@ emmm.start_bot()
 
 You can optionally pass in a list of bot names during initialization that you don't want to consider during the eeny meeny miny moe process.
 
-```
+```python
 # Using EMMM_Slack_Bot in emmm.py to start the bot & not include other bots in responses
 emmm = EMMM_Slack_Bot(bot_name=BOT_NAME, bot_id=BOT_ID, bot_token=BOT_TOKEN,
                       known_bot_names=['botname1', 'botname2', BOT_NAME])
@@ -51,7 +49,4 @@ It will randomly choose a user out of all of the users in the channel, minus any
 
 ---
 
-###### Author
-
-Andy Boutin
-www.andrewboutin.com
+Check out my [personal site](https://andrewboutin.com)!
