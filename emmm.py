@@ -264,4 +264,3 @@ if __name__ == "__main__":
     emmm = EMMM_Slack_Bot(bot_name=BOT_NAME, bot_id=BOT_ID, bot_token=BOT_TOKEN, known_bot_names=known_bot_names)
     emmm.connect()
     emmm.start_bot()
-

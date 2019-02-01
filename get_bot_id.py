@@ -32,12 +32,12 @@ def get_bot_id(name, token):
         for user in users:
             # Look for our bot
             if 'name' in user and user.get('name') == BOT_NAME:
-                print("Bot ID: {}.".format(user.get('id')))
+                print("Bot ID: '{}'.".format(user.get('id')))
                 return
 
         print("Could not find bot user with the name " + BOT_NAME)
     else:
-        print("Failed to make api call to Slack.")
+        print("Failed to make API call to Slack.")
 
 
 if __name__ == '__main__':
@@ -46,4 +46,3 @@ if __name__ == '__main__':
     BOT_TOKEN = os.environ.get('SLACK_BOT_TOKEN')
 
     get_bot_id(BOT_NAME, BOT_TOKEN)
-

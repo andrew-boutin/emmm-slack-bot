@@ -2,26 +2,21 @@
 
 EMMM (Eeny, meeny, miny, moe) is a [Slack Bot](https://api.slack.com/bot-users) that can randomly choose a user in a channel out of all of the members in the channel.
 
-## Setup
-
-The bot uses `python3` and the `slackclient` package.
-
-[Create a Slack Bot](https://api.slack.com/custom-integrations) in *Slack* itself.
-
-Choose a `name` and get the bot's API `token` from the *Integrations Section*.
-
-You'll also need the bot's `id` to connect to the *Slack APIs*.
-
-The script `get_bot_id.py` can be used to get the `id` by using the `name` and `token` (Keep all of these private!).
-
-In Slack, invite the bot to any of the channels that you want it available in.
-
-```python
-# Using get_bot_id in get_bot_id.py to get the bot's id
-get_bot_id(BOT_NAME, BOT_TOKEN)
-```
+![Eeny Meeny Miny Moe Gif](docs/emmm.gif)
 
 ## Use
+
+Requires `python3`.
+
+1. [Create a Slack Bot](https://api.slack.com/custom-integrations) in Slack itself. Choose a `name` and get the bot's API `token` from the *Integrations Section*.
+1. Start the virtualenv, install dependencies, export environment variables, and retrieve the bot `ID` using `get_bot_id.py`.
+1. Set the bot ID environment variable, and start up `emmm.py`.
+1. In Slack, invite the bot to any of the channels that you want it available in.
+1. @ mention the bot with `@emmm`.
+
+See [EXAMPLE.md](docs/EXAMPLE.md) for more details on the scripting part outside of Slack itself.
+
+## Details
 
 You need the bot's `name`, `token`, and `id` to connect the bot to the *Slack APIs*.
 
@@ -45,7 +40,7 @@ emmm = EMMM_Slack_Bot(bot_name=BOT_NAME, bot_id=BOT_ID, bot_token=BOT_TOKEN,
 
 While the bot's running in a channel, in Slack you can type **@emmm** to trigger the bot.
 
-It will randomly choose a user out of all of the users in the channel, minus any bots configured to be ignored, and send a message to the channel with the user that was chosen.
+The bot will randomly choose a user out of all of the users in the channel, minus any bots configured to be ignored, and send a message to the channel with the user that was chosen.
 
 ---
 
